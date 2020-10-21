@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+spec:
+  type: LoadBalancer
+  ports:
+  - name: test
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: test
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: test
+ labels:
+   app: test
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: test
+ template:
+   metadata:
+     labels:
+       app: test
+   spec:
+     containers:
+     - name: test
+       image: okiprasetia/test:latest
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: test
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 80
