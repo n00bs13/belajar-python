@@ -32,7 +32,7 @@ spec:
    spec:
      containers:
      - name: test
-       image: okiprasetia/test-repo:latest
+       image: okiprasetia/test:latest
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
