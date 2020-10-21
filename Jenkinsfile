@@ -1,9 +1,4 @@
 pipeline {
-environment {
-	registry = "okiprasetia/test"
-	registryCredential = 'Desersi123#'
-	dockerImage = ''
-}
   agent any
   stages {
     stage('Image Building') {
