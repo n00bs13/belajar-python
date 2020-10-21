@@ -8,7 +8,6 @@ pipeline {
     }
     stage('Pushing to docker hub') {
       steps {
-	
         sh 'docker push okiprasetia/test:${BUILD_NUMBER}'
       }
     }
