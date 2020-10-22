@@ -30,9 +30,12 @@ spec:
      labels:
        app: test
    spec:
+     imagePullSecrets:
+      - name: regcred
      containers:
      - name: test
        image: okiprasetia/test:latest
+       imagePullPolicy: Always
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
