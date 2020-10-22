@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test
+  name: test1
 spec:
   type: LoadBalancer
   ports:
-  - name: test
+  - name: test1
     port: 80
     targetPort: 80
     protocol: TCP
@@ -17,35 +17,35 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: test
+ name: test1
  labels:
-   app: test
+   app: test1
 spec:
  replicas: 1
  selector:
    matchLabels:
-     app: test
+     app: test1
  template:
    metadata:
      labels:
-       app: test
+       app: test1
    spec:
      imagePullSecrets:
       - name: regcred
      containers:
-     - name: test
+     - name: test1
        image: okiprasetia/test:latest
        imagePullPolicy: Always
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: test
+  name: test1
 spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
-    name: test
+    name: test1
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 80
