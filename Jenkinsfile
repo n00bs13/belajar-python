@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Pushing to docker hub') {
       steps {
-	sh 'sh "docker login -u okiprasetia -p Desersi123#'
+	sh 'docker login -u okiprasetia -p Desersi123#'
         sh 'docker push okiprasetia/test:${BUILD_NUMBER}'
       }
     }
