@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Pushing to Kubenernetes') {
       steps {
-        sh 'kubectl set image --namespace=test test=okiprasetia/test:${BUILD_NUMBER}'
+        sh 'kubectl set image deployment/test --namespace=test test=okiprasetia/test:${BUILD_NUMBER}'
       }
     }
   }
