@@ -36,6 +36,9 @@ spec:
      - name: test1
        image: okiprasetia/test:latest
        imagePullPolicy: Always
+       port:
+         - ContainerPort: 80
+           protocol: TCP
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
