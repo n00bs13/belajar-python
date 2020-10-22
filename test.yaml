@@ -4,14 +4,14 @@ kind: Service
 metadata:
   name: test1
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: test1
     port: 80
     targetPort: 80
     protocol: TCP
   selector:
-    app: test
+    app: test1
 
 ---
 apiVersion: apps/v1
